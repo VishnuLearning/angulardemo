@@ -1,13 +1,12 @@
 <h1>Pizza Ordering</h1>
-<app-ingredient></app-ingredient>
 <p>Select ingredients and add to your pizza</p>
 <p>Your selected ingredients: </p>
-<ul>
-  <li *ngFor="let item of selected; let i=index">
-    {{item}} <button (click)='selected.splice(i, 1)'>Remove</button>
-  </li>
-</ul>
+<div class="ingredients">
+  <app-ingredient *ngFor="let item of selected; let i=index" 
+    [topping]='item'
+    (onremove)="selected.splice(i, 1)">
+  </app-ingredient>
+</div>
 <select [(ngModel)]='ingredient' (change)='add()'>
-  <option value='None'></option>
-  <option *ngFor="let topping of toppings | async" [value]='topping.name'>{{topping.name}}</option>
+  <option *ngFor="let topping of toppings | async" [ngValue]=topping>{{topping}}</option>
 </select>

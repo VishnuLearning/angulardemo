@@ -11,16 +11,16 @@ import { Topping } from './models/topping';
 export class AppComponent implements OnInit {
   toppings: Observable<Topping[]>;
 
-  selected: Array<string> = [];
+  selected: Array<Topping> = [];
 
-  ingredient: string = "Bell pepper";
+  ingredient: Topping;
 
   constructor(private dataService:DataService) {
 
   }
 
   add() {
-    if(this.ingredient!="None") this.selected.push(this.ingredient)
+    if(this.ingredient) this.selected.push(this.ingredient)
   }
   
   ngOnInit(): void {

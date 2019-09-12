@@ -1,17 +1,7 @@
-li {
-    list-style-type: none;
-    border-left: 5px solid green;
-    padding-left: 10px;
-
-    .bold {
-        font-weight: bold;
-    }
-    
-    .italic {
-        font-style: italic;
-    }
-
-    .underline {
-        text-decoration: underline;
-    }
+.ingredients {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
