@@ -1,0 +1,5 @@
+[
+    {"name":"Tomatoes", "imageurl":"assets/images/tomatoes.jpg", "cost":10},
+    {"name":"Bell Pepper", "imageurl":"assets/images/peppers.jpg", "cost":60},
+    {"name":"Pineapple", "imageurl":"assets/images/pineapple.jpg", "cost":20}
+]
