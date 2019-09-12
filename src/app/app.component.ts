@@ -1,8 +1,9 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 import { DataService } from './services/data.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Topping } from './models/topping';
 import { FlickrPhoto } from './models/flickr-photo';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'foo',
@@ -10,7 +11,8 @@ import { FlickrPhoto } from './models/flickr-photo';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  toppings: Observable<Topping[]>;
+  
+  toppings: Topping[];
   images: Observable<FlickrPhoto[]>;
   selected: Array<Topping> = [];
   place: string;
@@ -21,14 +23,21 @@ export class AppComponent implements OnInit {
   }
 
   add() {
-    if(this.ingredient) this.selected.push(this.ingredient)
+    //TODO: remove ingredient from toppings list
+    this.toppings.splice(this.toppings.indexOf(this.ingredient), 1);
+    if(this.ingredient) this.selected.push(this.ingredient);
+  }
+
+  remove(t:Topping) {
+    this.toppings.push(t);
+    this.selected.splice(this.selected.indexOf(t), 1);
   }
   
   ngOnInit(): void {
-    // this.dataService.get_toppings().subscribe( d => {
-    //   this.toppings = d;
-    // })
-    this.toppings = this.dataService.get_toppings();
+    this.dataService.get_toppings().pipe(take(1)).subscribe( d => {
+      this.toppings = d;
+    })
+    //this.toppings = this.dataService.get_toppings();
    
   }
 

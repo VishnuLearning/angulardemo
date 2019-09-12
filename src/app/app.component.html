@@ -2,11 +2,13 @@
 <p>Select ingredients and add to your pizza</p>
 <p>Your selected ingredients: </p>
 <div class="ingredients">
-  <app-ingredient *ngFor="let item of selected; let i=index" [topping]='item' (onremove)="selected.splice(i, 1)">
+  <app-ingredient *ngFor="let item of selected; let i=index" 
+       [topping]='item' (onremove)="remove($event)">
   </app-ingredient>
 </div>
 <select [(ngModel)]='ingredient' (change)='add()'>
-  <option *ngFor="let topping of toppings | async" [ngValue]=topping>{{topping}}</option>
+  <option *ngFor="let topping of toppings" [ngValue]=topping>
+    {{topping}}</option>
 </select>
 <div class='flickr'>
   <div class="form">

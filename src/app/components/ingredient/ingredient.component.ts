@@ -9,14 +9,14 @@ import { Topping } from 'src/app/models/topping';
 export class IngredientComponent implements OnInit {
 
   @Input() topping: Topping;
-  @Output() onremove = new EventEmitter<boolean>();
+  @Output() onremove = new EventEmitter<Topping>();
 
   constructor() { }
 
   remove() {
-    this.onremove.emit(true);
+    this.onremove.emit(this.topping);
   }
-  
+
   ngOnInit() {
   }
 
