@@ -1,6 +1,6 @@
 <div *ngIf='topping'>
     <img [src]='topping.imageurl' />
     <h2>{{topping.name}}</h2>
-    <h3>Rs. {{topping.cost}}</h3>
+    <h3>{{topping.cost | currency:'INR'}}</h3>
     <button (click)="remove()">x</button>
 </div>
