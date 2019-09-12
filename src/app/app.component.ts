@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { DataService } from './services/data.service';
 import { Observable } from 'rxjs';
 import { Topping } from './models/topping';
+import { FlickrPhoto } from './models/flickr-photo';
 
 @Component({
   selector: 'foo',
@@ -10,9 +11,9 @@ import { Topping } from './models/topping';
 })
 export class AppComponent implements OnInit {
   toppings: Observable<Topping[]>;
-
+  images: Observable<FlickrPhoto[]>;
   selected: Array<Topping> = [];
-
+  place: string;
   ingredient: Topping;
 
   constructor(private dataService:DataService) {
@@ -28,6 +29,11 @@ export class AppComponent implements OnInit {
     //   this.toppings = d;
     // })
     this.toppings = this.dataService.get_toppings();
+   
+  }
+
+  updateImages() {
+    this.images = this.dataService.get_flickr_photolist(this.place);
   }
 
 }
