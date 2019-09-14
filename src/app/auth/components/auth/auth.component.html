@@ -1,0 +1,19 @@
+<div [formGroup]="loginForm" class="form" novalidate>
+    <h3>Login</h3>
+
+    <label>
+        Username:
+        <input type="text" formControlName="username" required>
+      </label>
+  
+    <label>
+      Password:
+      <input type="text" formControlName="password" required>
+    </label>
+
+    <button type="submit" (click)="onSubmit()"
+            [disabled]="loginForm.pristine || loginForm.status!='VALID'" class="btn btn-success">Submit</button>
+  </div>
+  <p>
+    Form Status: {{ loginForm.status }}
+  </p>

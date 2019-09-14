@@ -1,19 +1,2 @@
 <h1>Pizza Ordering</h1>
-<p>Select ingredients and add to your pizza</p>
-<p>Your selected ingredients: </p>
-<div class="ingredients">
-  <app-ingredient *ngFor="let item of selected; let i=index" 
-       [topping]='item' (onremove)="remove($event)">
-  </app-ingredient>
-</div>
-<select [(ngModel)]='ingredient' (change)='add()'>
-  <option *ngFor="let topping of toppings" [ngValue]=topping>
-    {{topping}}</option>
-</select>
-<div class='flickr'>
-  <div class="form">
-    <input [(ngModel)]='place' /> <button [disabled]='!place || !place.trim()' (click)='updateImages()'>Search</button>
-  </div>
-  <div class="images"><img *ngFor='let i of images | async' [title]='i.name' [src]='i.url' /></div>
-
-</div>
+<router-outlet></router-outlet>

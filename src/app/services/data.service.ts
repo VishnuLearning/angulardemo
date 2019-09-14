@@ -17,7 +17,7 @@ export class DataService {
     console.log("In Data Service");
     return this.http.get<Topping[]>(
       `${environment.serverurl}/pizza/toppings/`).pipe(
-      map(a => a.map(t=>{return new Topping(t.name, t.image, t.cost)})
+      map(a => a.map(t=>{return new Topping(t.name, t['image'], t.cost)})
       )
     );
   }
